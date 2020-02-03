@@ -6,7 +6,7 @@ const Car = (props) => {
             <p onClick={props.click}>"{props.mark}"</p>
             <p> milage: {props.mileage} miles</p>
             <p>{props.children}</p>
-            <input type="text" onChange={props.changed}/>
+            <input type="text" onChange={props.changed} value={props.mark}/>
             <p>===================================</p>
         </div>
 
