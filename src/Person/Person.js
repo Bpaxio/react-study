@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import './Person.css'
 
 const Person = (props) => {
     const [age, updateAge] = useState(props.age);

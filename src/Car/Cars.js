@@ -34,12 +34,19 @@ class Cars extends Component {
     }
 
     render() {
+        const buttonStyle = {
+            backgroundColor: 'white',
+            font: 'inherit',
+            border: '1px solid blue',
+            padding: '8px',
+            cursor: 'pointer',
+        };
         return (
             <div className="Cars">
                 <p>
                     ===================== CARS =======================
                 </p>
-                <button onClick={this.switchCarsHandler}>Update Cars</button>
+                <button style={buttonStyle} onClick={this.switchCarsHandler}>Update Cars</button>
                 <Car
                     mark={this.state.cars[0].mark}
                     mileage={this.state.cars[0].mileage}
