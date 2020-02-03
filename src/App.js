@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import Person from './Person/Person'
+import Cars from "./Car/Cars";
 
 const App = () => {
     const [persons, setPersons] = useState({
@@ -24,11 +25,26 @@ const App = () => {
         <div className="App">
             <h1>{title}</h1>
             <button onClick={() => setTitle("New Title")}>Change Title</button>
-            <p>===================================</p>
-            <Person onCopy onCut onPaste name={persons.persons[0].name} age={persons.persons[0].age}/>
-            <Person name={persons.persons[1].name} age={persons.persons[1].age}/>
-            <Person name={persons.persons[2].name} age={persons.persons[2].age}>I don't want to say smth</Person>
+            <p>
+                ==================== HUMANS ======================
+            </p>
+            <Person onCopy onCut onPaste
+                    name={persons.persons[0].name}
+                    age={persons.persons[0].age}
+            />
+            <Person
+                name={persons.persons[1].name}
+                age={persons.persons[1].age}
+            />
+            <Person
+                name={persons.persons[2].name}
+                age={persons.persons[2].age}
+            >
+                I don't want to say smth
+            </Person>
             <button onClick={getNewState}>Switch name</button>
+
+            <Cars/>
         </div>
     );
 };
