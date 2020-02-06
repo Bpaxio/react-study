@@ -25,6 +25,7 @@ const App = () => {
         <div className="App">
             <h1>{title}</h1>
             <button onClick={() => setTitle("New Title")}>Change Title</button>
+            <Cars/>
             <p>
                 ==================== HUMANS ======================
             </p>
@@ -44,7 +45,6 @@ const App = () => {
             </Person>
             <button onClick={getNewState}>Switch name</button>
 
-            <Cars/>
         </div>
     );
 };

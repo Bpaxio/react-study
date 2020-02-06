@@ -11,32 +11,40 @@ class Cars extends Component {
         ],
         showCars: false
     };
-    switchCarsHandler = () => {
-        this.setState({
-            cars: [
-                {mark: "Лада", mileage: 49230},
-                {mark: "Жигули", mileage: 140200},
-                {mark: "Москвич", mileage: 111040}
-            ]
-        })
-    };
-    switchSpecialCarHandler = (position, newCar) => {
-        this.setState(this.state.cars.splice(position,1,newCar))
-    };
-
-    markChangedHandler = ( event ) => {
-        this.setState({
-            cars: [
-                {mark: "Лада", mileage: 49230},
-                {mark: "Жигули", mileage: 140200},
-                {mark: event.target.value, mileage: 111040}
-            ]
-        })
-    };
 
     toggleCarsHandler = () => {
         this.setState({
             showCars: !this.state.showCars
+        })
+    };
+
+
+    switchCarsHandler = () => {
+        this.setState({
+            cars: [
+                {id: 0, mark: "Лада", mileage: 49230},
+                {id: 1, mark: "Жигули", mileage: 140200},
+                {id: 2, mark: "Москвич", mileage: 111040}
+            ]
+        })
+    };
+
+    deleteCarHandler = (index) => {
+        const cars = [...this.state.cars];
+        cars.splice(index, 1);
+        this.setState({cars: cars});
+    };
+
+    changeCarHandler = (event, id) => {
+        // const car = {...this.state.cars.find(c => c.id === id)};
+        const carIndex = this.state.cars.findIndex(c => c.id === id);
+        const car = {...this.state.cars[carIndex]};
+        car.mark = event.target.value;
+
+        const cars = [...this.state.cars];
+        cars[carIndex] = car;
+        this.setState({
+            cars: cars
         })
     };
 
@@ -48,38 +56,33 @@ class Cars extends Component {
             padding: '8px',
             cursor: 'pointer',
         };
+
+
+        let cars = null;
+        if (this.state.showCars) {
+            cars = (
+                <div>
+                    <p>
+                        ===================== CARS =======================
+                    </p>
+                    <button style={buttonStyle} onClick={this.switchCarsHandler}>Reset</button>
+                    {this.state.cars.map((car, index) => {
+                        return <Car
+                            click={() => this.deleteCarHandler(index)}
+                            changed={ event => this.changeCarHandler(event, car.id)}
+                            mark={car.mark}
+                            mileage={car.mileage}
+                            key={car.id}
+                        />
+                    })}
+                </div>
+            )
+        }
         return (
             <div className="Cars">
                 <p/>
                 <button style={buttonStyle} onClick={this.toggleCarsHandler}>Show/Hide Cars</button>
-                {this.state.showCars === true ?
-                    <div>
-                        <p>
-                            ===================== CARS =======================
-                        </p>
-                        <button style={buttonStyle} onClick={this.switchCarsHandler}>Update Cars</button>
-                        <Car
-                            mark={this.state.cars[0].mark}
-                            mileage={this.state.cars[0].mileage}
-                            click={this.switchSpecialCarHandler.bind(this, 0, {mark: "Лада", mileage: 49230})}
-                        >
-
-                        </Car>
-                        <Car
-                            mark={this.state.cars[1].mark}
-                            mileage={this.state.cars[1].mileage}
-                            // using bind is more convenient because of react rerendering times
-                            click={() => this.switchSpecialCarHandler(1, {mark: "Жигули", mileage: 140200})}>
-
-                        </Car>
-                        <Car
-                            mark={this.state.cars[2].mark}
-                            mileage={this.state.cars[2].mileage}
-                            changed={this.markChangedHandler}
-                            click={this.switchSpecialCarHandler.bind(this, 2, {mark: "Москвич", mileage: 111040})}>
-                        </Car>
-                    </div> : null
-                }
+                {cars}
             </div>
 
 
