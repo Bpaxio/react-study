@@ -1,5 +1,6 @@
 import React, {Component, useState} from 'react'
 import Car from "./Car";
+import Radium from 'radium';
 
 class Cars extends Component {
 
@@ -50,11 +51,16 @@ class Cars extends Component {
 
     render() {
         const buttonStyle = {
-            backgroundColor: 'white',
+            color: 'white',
+            backgroundColor: 'green',
             font: 'inherit',
             border: '1px solid blue',
             padding: '8px',
             cursor: 'pointer',
+            ':hover': {
+                backgroundColor: 'lightgreen',
+                color: 'black'
+            }
         };
 
 
@@ -65,7 +71,7 @@ class Cars extends Component {
                     <p>
                         ===================== CARS =======================
                     </p>
-                    <button style={buttonStyle} onClick={this.switchCarsHandler}>Reset</button>
+                    <button onClick={this.switchCarsHandler}>Reset</button>
                     {this.state.cars.map((car, index) => {
                         return <Car
                             click={() => this.deleteCarHandler(index)}
@@ -76,7 +82,12 @@ class Cars extends Component {
                         />
                     })}
                 </div>
-            )
+            );
+            buttonStyle.backgroundColor='red';
+            buttonStyle[':hover'] = {
+                backgroundColor: 'salmon',
+                color: 'black'
+            }
         }
         return (
             <div className="Cars">
@@ -90,4 +101,4 @@ class Cars extends Component {
     }
 }
 
-export default Cars;
+export default Radium(Cars);
