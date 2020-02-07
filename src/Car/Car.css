@@ -6,16 +6,8 @@
     padding: 16px;
     text-align: center;
 }
-
-.Red {
-    color: white;
-    background-color: red;
-}
-.Red:hover {
-    background-color: salmon;
-    color: black;
-}
-
-.Fuck {
-    color: purple;
+@media (min-width: 500px) {
+    .Car {
+        width: 450px;
+    }
 }

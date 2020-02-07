@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person'
 import Cars from "./Car/Cars";
 
@@ -22,7 +22,7 @@ const App = () => {
         });
     };
     return (
-        <div className="App">
+        <div className={classes.App}>
             <h1>{title}</h1>
             <button onClick={() => setTitle("New Title")}>Change Title</button>
             <Cars/>

@@ -1,5 +1,6 @@
 import React, {Component, useState} from 'react'
 import Car from "./Car";
+import classes from "./Cars.css"
 
 class Cars extends Component {
 
@@ -49,20 +50,7 @@ class Cars extends Component {
     };
 
     render() {
-        const buttonStyle = {
-            color: 'white',
-            backgroundColor: 'green',
-            font: 'inherit',
-            border: '1px solid blue',
-            padding: '8px',
-            margin: '10px',
-            cursor: 'pointer',
-            ':hover': {
-                backgroundColor: 'lightgreen',
-                color: 'black'
-            }
-        };
-
+        let buttonClasses = classes.Green;
 
         let cars = null;
         if (this.state.showCars) {
@@ -77,18 +65,14 @@ class Cars extends Component {
                             key={car.id}
                         />
                     })}
-                    <button key="reset" className="Red" onClick={this.switchCarsHandler}>Reset</button>
+                    <button key="reset" className={classes.Red} onClick={this.switchCarsHandler}>Reset</button>
                 </div>
             );
-            buttonStyle.backgroundColor = 'red';
-            buttonStyle[':hover'] = {
-                backgroundColor: 'salmon',
-                color: 'black'
-            }
+            buttonClasses = classes.Red;
         }
         return (
-            <div className="Cars">
-                <button key="show" style={buttonStyle} onClick={this.toggleCarsHandler}>Show/Hide Cars</button>
+            <div className={classes.Cars}>
+                <button key="show" className={buttonClasses} onClick={this.toggleCarsHandler}>Show/Hide Cars</button>
                 {cars}
             </div>
         )

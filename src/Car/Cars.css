@@ -1,0 +1,30 @@
+.Cars {
+    width: 60%;
+    margin: 16px auto;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 16px;
+    text-align: center;
+}
+@media (min-width: 500px) {
+    .Car {
+        width: 500px;
+    }
+}
+
+.Red {
+    color: white;
+    background-color: red;
+}
+.Red:hover {
+    background-color: salmon;
+    color: black;
+}
+.Green {
+    color: white;
+    background-color: green;
+}
+.Green:hover {
+    background-color: lightgreen;
+    color: black;
+}

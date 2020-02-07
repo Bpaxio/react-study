@@ -1,14 +1,9 @@
 import React from 'react'
-import './Car.css'
+import classes from "./Car.css";
 
 const Car = (props) => {
-    const style = {
-        '@media (mine-width: 500px)': {
-            width: '450px'
-        }
-    };
     return (
-        <div className="Car" style={style}>
+        <div className={classes.Car}>
                 <p onClick={props.click}>"{props.mark}" milage: {props.mileage} miles</p>
                 <p>{props.children}</p>
             <input type="text" onChange={props.changed} value={props.mark}/>
