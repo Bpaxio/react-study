@@ -1,6 +1,7 @@
 import React, {Component, useState} from 'react'
 import Car from "./Car";
 import classes from "./Cars.module.css"
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 
 class Cars extends Component {
 
@@ -38,7 +39,9 @@ class Cars extends Component {
 
     changeCarHandler = (event, id) => {
         // const car = {...this.state.cars.find(c => c.id === id)};
-        const carIndex = this.state.cars.findIndex(c => c.id === id);
+        const carIndex = this.state.cars.findIndex(
+            c => c.id === id
+        );
         const car = {...this.state.cars[carIndex]};
         car.mark = event.target.value;
 
@@ -57,13 +60,17 @@ class Cars extends Component {
             cars = (
                 <div>
                     {this.state.cars.map((car, index) => {
-                        return <Car
-                            click={() => this.deleteCarHandler(index)}
-                            changed={event => this.changeCarHandler(event, car.id)}
-                            mark={car.mark}
-                            mileage={car.mileage}
-                            key={car.id}
-                        />
+                        return (
+                            <ErrorBoundary key = {car.id}>
+                                <Car
+                                    click={() => this.deleteCarHandler(index)}
+                                    changed={event => this.changeCarHandler(event, car.id)}
+                                    mark={car.mark}
+                                    mileage={car.mileage}
+                                    key={car.id}
+                                />
+                            </ErrorBoundary>
+                        )
                     })}
                     <button key="reset" className={classes.Red} onClick={this.switchCarsHandler}>Reset</button>
                 </div>
@@ -71,10 +78,10 @@ class Cars extends Component {
             buttonClasses = classes.Red;
         }
         return (
-            <div className={classes.Cars}>
-                <button key="show" className={buttonClasses} onClick={this.toggleCarsHandler}>Show/Hide Cars</button>
-                {cars}
-            </div>
+                <div className={classes.Cars}>
+                    <button key="show" className={buttonClasses} onClick={this.toggleCarsHandler}>Show/Hide Cars</button>
+                    {cars}
+                </div>
         )
     }
 }
