@@ -6,3 +6,16 @@
     padding: 16px;
     text-align: center;
 }
+
+.Red {
+    color: white;
+    background-color: red;
+}
+.Red:hover {
+    background-color: salmon;
+    color: black;
+}
+
+.Fuck {
+    color: purple;
+}

@@ -26,9 +26,8 @@ const App = () => {
             <h1>{title}</h1>
             <button onClick={() => setTitle("New Title")}>Change Title</button>
             <Cars/>
-            <p>
-                ==================== HUMANS ======================
-            </p>
+            <p/>
+            <p/>
             <Person onCopy onCut onPaste
                     name={persons.persons[0].name}
                     age={persons.persons[0].age}

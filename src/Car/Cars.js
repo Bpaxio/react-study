@@ -1,6 +1,5 @@
 import React, {Component, useState} from 'react'
 import Car from "./Car";
-import Radium from 'radium';
 
 class Cars extends Component {
 
@@ -56,6 +55,7 @@ class Cars extends Component {
             font: 'inherit',
             border: '1px solid blue',
             padding: '8px',
+            margin: '10px',
             cursor: 'pointer',
             ':hover': {
                 backgroundColor: 'lightgreen',
@@ -68,22 +68,19 @@ class Cars extends Component {
         if (this.state.showCars) {
             cars = (
                 <div>
-                    <p>
-                        ===================== CARS =======================
-                    </p>
-                    <button onClick={this.switchCarsHandler}>Reset</button>
                     {this.state.cars.map((car, index) => {
                         return <Car
                             click={() => this.deleteCarHandler(index)}
-                            changed={ event => this.changeCarHandler(event, car.id)}
+                            changed={event => this.changeCarHandler(event, car.id)}
                             mark={car.mark}
                             mileage={car.mileage}
                             key={car.id}
                         />
                     })}
+                    <button key="reset" className="Red" onClick={this.switchCarsHandler}>Reset</button>
                 </div>
             );
-            buttonStyle.backgroundColor='red';
+            buttonStyle.backgroundColor = 'red';
             buttonStyle[':hover'] = {
                 backgroundColor: 'salmon',
                 color: 'black'
@@ -91,14 +88,11 @@ class Cars extends Component {
         }
         return (
             <div className="Cars">
-                <p/>
-                <button style={buttonStyle} onClick={this.toggleCarsHandler}>Show/Hide Cars</button>
+                <button key="show" style={buttonStyle} onClick={this.toggleCarsHandler}>Show/Hide Cars</button>
                 {cars}
             </div>
-
-
         )
     }
 }
 
-export default Radium(Cars);
+export default Cars;

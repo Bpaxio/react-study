@@ -8,7 +8,6 @@ const Person = (props) => {
             <p>Human "{props.name}" {age} years old</p>
             <p>{props.children}</p>
             <button onClick={() => updateAge(age + 1)}>Happy Birthday!!!</button>
-            <p>===================================</p>
         </div>
     )
 };
