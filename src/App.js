@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import classes from './App.css';
+import classes from './App.module.css';
 import Person from './Person/Person'
 import Cars from "./Car/Cars";
 

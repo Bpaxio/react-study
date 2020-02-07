@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from "./Car.css";
+import classes from "./Car.module.css";
 
 const Car = (props) => {
     return (

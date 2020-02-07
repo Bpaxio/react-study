@@ -1,14 +1,14 @@
 import React, {Component, useState} from 'react'
 import Car from "./Car";
-import classes from "./Cars.css"
+import classes from "./Cars.module.css"
 
 class Cars extends Component {
 
     state = {
         cars: [
-            {mark: "Infinity", mileage: 0},
-            {mark: "Volkswagen", mileage: 20200},
-            {mark: "Skoda", mileage: 23000}
+            {id: 0, mark: "Infinity", mileage: 0},
+            {id: 1, mark: "Volkswagen", mileage: 20200},
+            {id: 2, mark: "Skoda", mileage: 23000}
         ],
         showCars: false
     };
