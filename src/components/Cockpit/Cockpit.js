@@ -5,21 +5,11 @@ import classes from "./Cockpit.module.css";
 
 const Cockpit = (props) => {
 
-    const [pState, setPersonsState] = useState({
-        persons: [
-            {id: 0, name: "Andy", age: 87},
-            {id: 1, name: "Glok", age: 23},
-            {id: 2, name: "Bill", age: 56}
-        ]
-    });
+    const [pState, setPersonsState] = useState(props.persons);
     const [title, setTitle] = useState(props.title);
-    const getNewState = () => {
+    const resetState = () => {
         setPersonsState({
-            persons: [
-                {id: 0, name:"Andy Blobert", age:88},
-                {id: 1, name:"Murai", age:24},
-                {id: 2, name:"Bill Geshua", age:56}
-            ]
+            persons: props.persons
         });
     };
 
@@ -32,10 +22,10 @@ const Cockpit = (props) => {
     return (
         <div className={classes.Cockpit}>
             <h1>{title}</h1>
-            <button className={baseClasses.Green} onClick={() => setTitle("New Title")}>Change Title</button>
+            <button className={baseClasses.Green} onClick={() => setTitle("[Changed]Hello, React App")}>Change Title</button>
             <div className={classes.Persons}>
-                <Persons persons={pState.persons} clicked={deletePersonHandler}/>
-                <button className={baseClasses.Red} onClick={getNewState}>Reset</button>
+                <Persons persons={pState} clicked={deletePersonHandler}/>
+                <button className={baseClasses.Red} onClick={resetState}>Reset</button>
             </div>
         </div>
     );

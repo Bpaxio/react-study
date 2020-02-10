@@ -16,6 +16,7 @@ class Cars extends Component {
             buttonTitle: 'Show Cars'
         };
     }
+
     render() {
         console.log('[Cars.js] render');
         let buttonClasses = classes.Green;

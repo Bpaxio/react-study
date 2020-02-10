@@ -11,8 +11,7 @@ const Car = (props) => {
                 clearTimeout(timer);
                 console.log("[Car.js]  cleanup work in useEffect", props)
             }
-        },
-        []);
+        }, [props]);
 
     console.log('[Car.js] rendering... ', props);
     return (
