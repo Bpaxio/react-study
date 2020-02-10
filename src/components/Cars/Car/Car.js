@@ -2,11 +2,6 @@ import React from 'react'
 import classes from "./Car.module.css";
 
 const Car = (props) => {
-
-    const rand = Math.random();
-    if (rand > 0.8) {
-        throw new Error('randomly failed');
-    }
     return (
         <div className={classes.Car}>
                 <p onClick={props.click}>"{props.mark}" milage: {props.mileage} miles</p>

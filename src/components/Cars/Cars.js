@@ -1,7 +1,6 @@
-import React, {Component, useState} from 'react'
-import Car from "./Car";
+import React, {Component} from 'react'
+import Car from "./Car/Car";
 import classes from "./Cars.module.css"
-import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 
 class Cars extends Component {
 
@@ -11,12 +10,15 @@ class Cars extends Component {
             {id: 1, mark: "Volkswagen", mileage: 20200},
             {id: 2, mark: "Skoda", mileage: 23000}
         ],
-        showCars: false
+        showCars: false,
+        buttonTitle: "Show Cars"
     };
 
     toggleCarsHandler = () => {
+        const newShowCars = !this.state.showCars;
         this.setState({
-            showCars: !this.state.showCars
+            showCars: newShowCars,
+            buttonTitle: newShowCars ? "Hide Cars" : "Show Cars"
         })
     };
 
@@ -60,17 +62,13 @@ class Cars extends Component {
             cars = (
                 <div>
                     {this.state.cars.map((car, index) => {
-                        return (
-                            <ErrorBoundary key = {car.id}>
-                                <Car
+                        return <Car
                                     click={() => this.deleteCarHandler(index)}
                                     changed={event => this.changeCarHandler(event, car.id)}
                                     mark={car.mark}
                                     mileage={car.mileage}
                                     key={car.id}
                                 />
-                            </ErrorBoundary>
-                        )
                     })}
                     <button key="reset" className={classes.Red} onClick={this.switchCarsHandler}>Reset</button>
                 </div>
@@ -79,7 +77,11 @@ class Cars extends Component {
         }
         return (
                 <div className={classes.Cars}>
-                    <button key="show" className={buttonClasses} onClick={this.toggleCarsHandler}>Show/Hide Cars</button>
+                    <button key="show"
+                            className={buttonClasses}
+                            onClick={this.toggleCarsHandler}>
+                        {this.state.buttonTitle}
+                    </button>
                     {cars}
                 </div>
         )

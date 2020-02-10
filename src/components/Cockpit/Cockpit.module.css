@@ -1,0 +1,14 @@
+.Cockpit {
+
+}
+.Cockpit button {
+    background-color: white;
+    font: inherit;
+    border: 1px solid lightgray;
+    padding: 8px;
+    margin: 10px;
+    cursor: pointer;
+}
+.Cockpit button:hover {
+    background-color: whitesmoke;
+}
