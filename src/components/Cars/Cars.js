@@ -24,6 +24,8 @@ class Cars extends Component {
         if (this.state.showCars) {
             cars = (
                 <div>
+                    <button key="reset" className={classes.Red} onClick={this.switchCarsHandler}>Reset</button>
+                    <button key="removeAll" className={classes.Red} onClick={this.deleteCarsHandler}>Remove</button>
                     {this.state.cars.map((car, index) => {
                         return <Car
                                     click={() => this.deleteCarHandler(index)}
@@ -33,7 +35,6 @@ class Cars extends Component {
                                     key={car.id}
                                 />
                     })}
-                    <button key="reset" className={classes.Red} onClick={this.switchCarsHandler}>Reset</button>
                 </div>
             );
             buttonClasses = classes.Red;
@@ -58,7 +59,6 @@ class Cars extends Component {
         })
     };
 
-
     switchCarsHandler = () => {
         this.setState({
             cars: [
@@ -73,6 +73,10 @@ class Cars extends Component {
         const cars = [...this.state.cars];
         cars.splice(index, 1);
         this.setState({cars: cars});
+    };
+
+    deleteCarsHandler = () => {
+        this.setState({cars: []});
     };
 
     changeCarHandler = (event, id) => {

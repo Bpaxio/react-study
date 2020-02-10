@@ -5,18 +5,14 @@ const Car = (props) => {
     useEffect(
         () => {
             console.log("[Car.js] useEffect");
+            const timer = setTimeout(
+                () => alert("[Car.js] timeout Alert"), 1000);
             return () => {
+                clearTimeout(timer);
                 console.log("[Car.js]  cleanup work in useEffect", props)
             }
         },
         []);
-    useEffect(
-        () => {
-            console.log("[Car.js] 2nd useEffect");
-            return () => {
-                console.log("[Car.js] cleanup work in 2nd useEffect on every component every time because of missing second argument", props)
-            }
-        });
 
     console.log('[Car.js] rendering... ', props);
     return (
