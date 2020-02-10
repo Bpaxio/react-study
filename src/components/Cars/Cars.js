@@ -3,16 +3,52 @@ import Car from "./Car/Car";
 import classes from "./Cars.module.css"
 
 class Cars extends Component {
+    constructor(props) {
+        super(props);
+        console.log('[Cars.js] constructor');
+        this.state = {
+            cars: [
+                {id: 0, mark: 'Infinity', mileage: 0},
+                {id: 1, mark: 'Volkswagen', mileage: 20200},
+                {id: 2, mark: 'Skoda', mileage: 23000}
+            ],
+            showCars: false,
+            buttonTitle: 'Show Cars'
+        };
+    }
+    render() {
+        console.log('[Cars.js] render');
+        let buttonClasses = classes.Green;
 
-    state = {
-        cars: [
-            {id: 0, mark: "Infinity", mileage: 0},
-            {id: 1, mark: "Volkswagen", mileage: 20200},
-            {id: 2, mark: "Skoda", mileage: 23000}
-        ],
-        showCars: false,
-        buttonTitle: "Show Cars"
-    };
+        let cars = null;
+        if (this.state.showCars) {
+            cars = (
+                <div>
+                    {this.state.cars.map((car, index) => {
+                        return <Car
+                                    click={() => this.deleteCarHandler(index)}
+                                    changed={event => this.changeCarHandler(event, car.id)}
+                                    mark={car.mark}
+                                    mileage={car.mileage}
+                                    key={car.id}
+                                />
+                    })}
+                    <button key="reset" className={classes.Red} onClick={this.switchCarsHandler}>Reset</button>
+                </div>
+            );
+            buttonClasses = classes.Red;
+        }
+        return (
+                <div className={classes.Cars}>
+                    <button key="show"
+                            className={buttonClasses}
+                            onClick={this.toggleCarsHandler}>
+                        {this.state.buttonTitle}
+                    </button>
+                    {cars}
+                </div>
+        );
+    }
 
     toggleCarsHandler = () => {
         const newShowCars = !this.state.showCars;
@@ -53,39 +89,6 @@ class Cars extends Component {
             cars: cars
         })
     };
-
-    render() {
-        let buttonClasses = classes.Green;
-
-        let cars = null;
-        if (this.state.showCars) {
-            cars = (
-                <div>
-                    {this.state.cars.map((car, index) => {
-                        return <Car
-                                    click={() => this.deleteCarHandler(index)}
-                                    changed={event => this.changeCarHandler(event, car.id)}
-                                    mark={car.mark}
-                                    mileage={car.mileage}
-                                    key={car.id}
-                                />
-                    })}
-                    <button key="reset" className={classes.Red} onClick={this.switchCarsHandler}>Reset</button>
-                </div>
-            );
-            buttonClasses = classes.Red;
-        }
-        return (
-                <div className={classes.Cars}>
-                    <button key="show"
-                            className={buttonClasses}
-                            onClick={this.toggleCarsHandler}>
-                        {this.state.buttonTitle}
-                    </button>
-                    {cars}
-                </div>
-        )
-    }
 }
 
 export default Cars;

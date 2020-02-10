@@ -1,8 +1,11 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import classes from './Person.module.css'
 import baseClasses from '../../../containers/App.module.css';
 
 const Person = (props) => {
+    useEffect(() => {
+        console.log("[Person.js] useEffect");
+    });
     const [age, updateAge] = useState(props.age);
     return (
         <div className={classes.Person}>

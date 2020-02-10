@@ -1,14 +1,16 @@
 .Cockpit {
+}
 
+.Persons {
+    width: 60%;
+    margin: 16px auto;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 16px;
+    text-align: center;
 }
-.Cockpit button {
-    background-color: white;
-    font: inherit;
-    border: 1px solid lightgray;
-    padding: 8px;
-    margin: 10px;
-    cursor: pointer;
-}
-.Cockpit button:hover {
-    background-color: whitesmoke;
+@media (min-width: 550px) {
+    .Persons {
+        width: 500px;
+    }
 }

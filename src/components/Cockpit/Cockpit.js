@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Persons from "../Persons/Persons";
 import baseClasses from '../../containers/App.module.css';
+import classes from "./Cockpit.module.css";
 
 const Cockpit = (props) => {
 
@@ -29,11 +30,13 @@ const Cockpit = (props) => {
     };
 
     return (
-        <div>
+        <div className={classes.Cockpit}>
             <h1>{title}</h1>
             <button className={baseClasses.Green} onClick={() => setTitle("New Title")}>Change Title</button>
-            <Persons persons={pState.persons} clicked={deletePersonHandler}/>
-            <button className={baseClasses.Red} onClick={getNewState}>Reset</button>
+            <div className={classes.Persons}>
+                <Persons persons={pState.persons} clicked={deletePersonHandler}/>
+                <button className={baseClasses.Red} onClick={getNewState}>Reset</button>
+            </div>
         </div>
     );
 };
