@@ -16,10 +16,11 @@ class Cars extends Component {
             buttonTitle: 'Show Cars',
             changeCounter: 0
         };
+        this.buttonElementRef = React.createRef();
     }
 
     componentDidMount() {
-        this.buttonElement.focus();
+        this.buttonElementRef.current.focus();
     }
 
     render() {
@@ -50,7 +51,7 @@ class Cars extends Component {
         return (
                 <div className={classes.Cars}>
                     <button key="show"
-                            ref={(buttonEl) => {this.buttonElement = buttonEl}}
+                            ref={this.buttonElementRef}
                             className={buttonClasses}
                             onClick={this.toggleCarsHandler}>
                         {this.state.buttonTitle}
