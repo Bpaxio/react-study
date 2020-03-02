@@ -91,9 +91,11 @@ class Cars extends Component {
 
         const cars = [...this.state.cars];
         cars[carIndex] = car;
-        this.setState({
-            cars: cars,
-            changeCounter: this.state.changeCounter + 1
+        this.setState((prevState, props) => {
+            return {
+                cars: cars,
+                changeCounter: prevState.changeCounter + 1
+            };
         })
     };
 }
