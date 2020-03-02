@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import classes from "./Car.module.css";
 import Auxy from "../../../hoc/Auxy";
 import withClass from "../../../hoc/withClass";
-import Person from "../../Persons/Person/Person";
 
 const Car = (props) => {
     useEffect(

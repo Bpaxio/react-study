@@ -18,6 +18,10 @@ class Cars extends Component {
         };
     }
 
+    componentDidMount() {
+        document.querySelector('button').focus();
+    }
+
     render() {
         console.log('[Cars.js] render');
         let buttonClasses = classes.Green;
