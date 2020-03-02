@@ -19,7 +19,7 @@ class Cars extends Component {
     }
 
     componentDidMount() {
-        document.querySelector('button').focus();
+        this.buttonElement.focus();
     }
 
     render() {
@@ -31,7 +31,9 @@ class Cars extends Component {
             cars = (
                 <div>
                     <button key="reset" className={classes.Red} onClick={this.switchCarsHandler}>Reset</button>
-                    <button key="removeAll" className={classes.Red} onClick={this.deleteCarsHandler}>Remove</button>
+                    <button key="removeAll"
+                            className={classes.Red}
+                            onClick={this.deleteCarsHandler}>Remove</button>
                     {this.state.cars.map((car, index) => {
                         return <Car
                                     click={() => this.deleteCarHandler(index)}
@@ -48,6 +50,7 @@ class Cars extends Component {
         return (
                 <div className={classes.Cars}>
                     <button key="show"
+                            ref={(buttonEl) => {this.buttonElement = buttonEl}}
                             className={buttonClasses}
                             onClick={this.toggleCarsHandler}>
                         {this.state.buttonTitle}
