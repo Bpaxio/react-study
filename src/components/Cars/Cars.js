@@ -13,7 +13,8 @@ class Cars extends Component {
                 {id: 2, mark: 'Skoda', mileage: 23000}
             ],
             showCars: false,
-            buttonTitle: 'Show Cars'
+            buttonTitle: 'Show Cars',
+            changeCounter: 0
         };
     }
 
@@ -91,7 +92,8 @@ class Cars extends Component {
         const cars = [...this.state.cars];
         cars[carIndex] = car;
         this.setState({
-            cars: cars
+            cars: cars,
+            changeCounter: this.state.changeCounter + 1
         })
     };
 }
