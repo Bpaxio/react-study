@@ -9,7 +9,7 @@ class Cars extends Component {
         this.state = {
             cars: [
                 {id: 0, mark: 'Infinity', mileage: 0},
-                {id: 1, mark: 'Volkswagen', mileage: "20200"},
+                {id: 1, mark: 'Volkswagen', mileage: 20200},
                 {id: 2, mark: 'Skoda', mileage: 23000}
             ],
             showCars: false,
