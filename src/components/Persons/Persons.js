@@ -1,11 +1,14 @@
-import React, {useEffect} from 'react';
+import React, {useContext, useEffect} from 'react';
+
 import Person from "./Person/Person";
+import AuthContext from "../../context/auth-context";
 
 
 const Persons = (props) => {
     useEffect(() => {
         console.log("[Persons.js] useEffect", props);
     });
+    const authContext = useContext(AuthContext);
 
     return props.persons.map((person, index) => (
         <Person
@@ -13,6 +16,7 @@ const Persons = (props) => {
             key={person.id}
             name={person.name}
             age={person.age}
+            logged={authContext.authenticated}
         />
     ));
 };

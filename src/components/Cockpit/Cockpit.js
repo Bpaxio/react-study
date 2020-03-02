@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import Persons from "../Persons/Persons";
 import baseClasses from '../../containers/App.module.css';
 import classes from "./Cockpit.module.css";
+import AuthContext from "../../context/auth-context";
 
 const Cockpit = (props) => {
 
@@ -10,6 +11,7 @@ const Cockpit = (props) => {
     const resetState = () => {
         setPersonsState(props.persons);
     };
+    const authContext = useContext(AuthContext);
 
     const deletePersonHandler = (index) => {
         console.log("index", index);
@@ -26,6 +28,7 @@ const Cockpit = (props) => {
             <div className={classes.Persons}>
                 <Persons persons={pState} clicked={deletePersonHandler}/>
                 <button className={baseClasses.Red} onClick={resetState}>Reset</button>
+                <button className={baseClasses.Green} onClick={authContext.login}>Log in</button>
             </div>
         </div>
     );
