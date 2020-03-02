@@ -8,15 +8,15 @@ const Cockpit = (props) => {
     const [pState, setPersonsState] = useState(props.persons);
     const [title, setTitle] = useState(props.title);
     const resetState = () => {
-        setPersonsState({
-            persons: props.persons
-        });
+        setPersonsState(props.persons);
     };
 
     const deletePersonHandler = (index) => {
-        const persons = [...pState.persons];
+        console.log("index", index);
+        console.log("state", pState);
+        const persons = [...pState];
         persons.splice(index, 1);
-        setPersonsState({persons: persons});
+        setPersonsState(persons);
     };
 
     return (
