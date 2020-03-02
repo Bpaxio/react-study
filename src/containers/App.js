@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './App.module.css';
 import Cars from "../components/Cars/Cars";
 import Cockpit from "../components/Cockpit/Cockpit";
-import withClasses from "../hoc/withClasses";
 import Auxiliary from "../hoc/Auxiliary";
 
 const App = () => {
@@ -15,11 +14,11 @@ const App = () => {
         ]};
 
     return (
-        <Auxiliary>
+        <Auxiliary classes={classes.App}>
             <Cockpit title={initialState.title} persons={initialState.persons}/>
             <Cars/>
         </Auxiliary>
     );
 };
 
-export default withClasses(App, classes.App);
+export default App;
