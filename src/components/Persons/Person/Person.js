@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import classes from './Person.module.css'
 import baseClasses from '../../../containers/App.module.css';
 import Auxy from "../../../hoc/Auxy";
-import withClass from "../../../hoc/withClasses";
+import withClass from "../../../hoc/withClass";
 
 const Person = (props) => {
     useEffect(() => {
