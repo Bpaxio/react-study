@@ -1,26 +1,28 @@
 import React, {useEffect} from 'react'
 import classes from "./Car.module.css";
+import Auxy from "../../../hoc/Auxy";
+import withClass from "../../../hoc/withClass";
 
 const Car = (props) => {
     useEffect(
         () => {
             console.log("[Car.js] useEffect");
-            const timer = setTimeout(
-                () => alert("[Car.js] timeout Alert"), 1000);
+            // const timer = setTimeout(
+            //     () => alert("[Car.js] timeout Alert"), 1000);
             return () => {
-                clearTimeout(timer);
+                // clearTimeout(timer);
                 console.log("[Car.js]  cleanup work in useEffect", props)
             }
         }, [props]);
 
     console.log('[Car.js] rendering... ', props);
     return (
-        <div className={classes.Car}>
+        <Auxy>
                 <p onClick={props.click}>"{props.mark}" milage: {props.mileage} miles</p>
                 <p>{props.children}</p>
             <input type="text" onChange={props.changed} value={props.mark}/>
-        </div>
+        </Auxy>
     )
 };
 
-export default Car;
+export default withClass(Car, classes.Car);
