@@ -7,10 +7,7 @@ const Car = (props) => {
     useEffect(
         () => {
             console.log("[Car.js] useEffect");
-            // const timer = setTimeout(
-            //     () => alert("[Car.js] timeout Alert"), 1000);
             return () => {
-                // clearTimeout(timer);
                 console.log("[Car.js]  cleanup work in useEffect", props)
             }
         }, [props]);
